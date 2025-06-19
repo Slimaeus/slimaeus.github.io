@@ -1,23 +1,24 @@
 ---
-title: How can I create this pages?
+title: How can I deploy this pages?
 published: 2025-06-19
 description: "How to use this blog template."
-image: "./cover.jpeg"
-tags: ["Blogging"]
+image: "https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/208fc754-890d-4adb-9753-2c963332675d/width=2048/01651-1456859105-(colour_1.5),girl,_Blue,yellow,green,cyan,purple,red,pink,_best,8k,UHD,masterpiece,male%20focus,%201boy,gloves,%20ponytail,%20long%20hair,.jpeg"
+tags: ["Blog"]
 category: Guides
 draft: false
 ---
 
-## How can I create this pages?
-
-
+### How can I deploy this pages?
+:::note
+I already have [npm](https://nodejs.org/en/download) installed on my machine and have set up [GitHub Pages](https://docs.github.com/en/pages/quickstart).
+:::
 1. Create blog repository:
-    - [Generate a new repository](https://github.com/saicaca/fuwari/generate) from this template.
+    - [Generate a new repository](https://github.com/saicaca/fuwari/generate) from [this template](https://github.com/saicaca/fuwari).
 1. I install [pnpm](https://pnpm.io) with this command `npm install -g pnpm`
 1. I run `pnpm install` to install dependencies.
 
 1. I add `deploy.yml` file to `.github/workflows` folder.
-    ```yml
+    ```yml title=".github/workflows/deploy.yml"
     name: Deploy to GitHub Pages
 
     on:
@@ -59,7 +60,7 @@ draft: false
             uses: actions/deploy-pages@v4
     ```
 1. Edit the config file `src/config.ts`.
-    ```ts
+    ```ts title="src/config.ts" {2-3}
     export const siteConfig: SiteConfig = {
         title: "Slimaeus",
         subtitle: "My profile",
@@ -67,9 +68,11 @@ draft: false
     }
     ```
 1. Edit the file `astro.config.ts`.
-    ```ts
+    ```ts title="astro.config.ts" {2-2}
     export default defineConfig({
 	    site: "https://slimaeus.github.io/",
+        //...
     })
     ```
-1. I add `.nojekyll` file to the root folder.
+1. I create `.nojekyll` empty file to the root folder.
+1. I commit and push.
