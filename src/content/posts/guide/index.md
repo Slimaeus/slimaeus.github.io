@@ -1,51 +1,75 @@
 ---
-title: Simple Guides for Fuwari
-published: 2024-04-01
+title: How can I create this pages?
+published: 2025-06-19
 description: "How to use this blog template."
 image: "./cover.jpeg"
-tags: ["Fuwari", "Blogging", "Customization"]
+tags: ["Blogging"]
 category: Guides
 draft: false
 ---
 
-> Cover image source: [Source](https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/208fc754-890d-4adb-9753-2c963332675d/width=2048/01651-1456859105-(colour_1.5),girl,_Blue,yellow,green,cyan,purple,red,pink,_best,8k,UHD,masterpiece,male%20focus,%201boy,gloves,%20ponytail,%20long%20hair,.jpeg)
-
-This blog template is built with [Astro](https://astro.build/). For the things that are not mentioned in this guide, you may find the answers in the [Astro Docs](https://docs.astro.build/).
-
-## Front-matter of Posts
-
-```yaml
----
-title: My First Blog Post
-published: 2023-09-09
-description: This is the first post of my new Astro blog.
-image: ./cover.jpg
-tags: [Foo, Bar]
-category: Front-end
-draft: false
----
-```
-
-| Attribute     | Description                                                                                                                                                                                                 |
-|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `title`       | The title of the post.                                                                                                                                                                                      |
-| `published`   | The date the post was published.                                                                                                                                                                            |
-| `description` | A short description of the post. Displayed on index page.                                                                                                                                                   |
-| `image`       | The cover image path of the post.<br/>1. Start with `http://` or `https://`: Use web image<br/>2. Start with `/`: For image in `public` dir<br/>3. With none of the prefixes: Relative to the markdown file |
-| `tags`        | The tags of the post.                                                                                                                                                                                       |
-| `category`    | The category of the post.                                                                                                                                                                                   |
-| `draft`        | If this post is still a draft, which won't be displayed.                                                                                                                                                    |
-
-## Where to Place the Post Files
+## How can I create this pages?
 
 
+1. Create blog repository:
+    - [Generate a new repository](https://github.com/saicaca/fuwari/generate) from this template.
+1. I install [pnpm](https://pnpm.io) with this command `npm install -g pnpm`
+1. I run `pnpm install` to install dependencies.
 
-Your post files should be placed in `src/content/posts/` directory. You can also create sub-directories to better organize your posts and assets.
+1. I add `deploy.yml` file to `.github/workflows` folder.
+    ```yml
+    name: Deploy to GitHub Pages
 
-```
-src/content/posts/
-├── post-1.md
-└── post-2/
-    ├── cover.png
-    └── index.md
-```
+    on:
+    # Trigger the workflow every time you push to the `main` branch
+    # Using a different branch name? Replace `main` with your branch’s name
+    push:
+        branches: [ main ]
+    # Allows you to run this workflow manually from the Actions tab on GitHub.
+    workflow_dispatch:
+
+    # Allow this job to clone the repo and create a page deployment
+    permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+    jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout your repository using git
+            uses: actions/checkout@v4
+        - name: Install, build, and upload your site
+            uses: withastro/action@v3
+            # with:
+            # path: . # The root location of your Astro project inside the repository. (optional)
+            # node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
+            # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
+
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+        - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v4
+    ```
+1. Edit the config file `src/config.ts`.
+    ```ts
+    export const siteConfig: SiteConfig = {
+        title: "Slimaeus",
+        subtitle: "My profile",
+        //...
+    }
+    ```
+1. Edit the file `astro.config.ts`.
+    ```ts
+    export default defineConfig({
+	    site: "https://slimaeus.github.io/",
+    })
+    ```
+1. I add `.nojekyll` file to the root folder.
