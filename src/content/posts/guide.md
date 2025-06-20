@@ -5,6 +5,7 @@ description: How to use this blog template
 tags: [Blog]
 category: Guides
 draft: false
+language: en
 ---
 :::note
 I already have [npm](https://nodejs.org/en/download) installed on my machine and have set up [GitHub Pages](https://docs.github.com/en/pages/quickstart).

@@ -5,6 +5,7 @@ description: Improve your productivity
 tags: [Visual Studio]
 category: Tips
 draft: false
+language: en
 ---
 ## 📝 Code editing
 - `Alt + 🔼/🔽` ➡️ Move line up/down
