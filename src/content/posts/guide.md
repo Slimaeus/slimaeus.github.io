@@ -1,14 +1,13 @@
 ---
 title: How can I deploy this pages?
 published: 2025-06-19
-description: "How to use this blog template."
-image: "https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/208fc754-890d-4adb-9753-2c963332675d/width=2048/01651-1456859105-(colour_1.5),girl,_Blue,yellow,green,cyan,purple,red,pink,_best,8k,UHD,masterpiece,male%20focus,%201boy,gloves,%20ponytail,%20long%20hair,.jpeg"
-tags: ["Blog"]
+description: How to use this blog template.
+image: https://img.freepik.com/free-photo/illustration-anime-city_23-2151779690.jpg?t=st=1750384605~exp=1750388205~hmac=cf03bf0255f708cab1d25d7f39870ce72a084d2c1bd937f412667c74049c912c&w=1480
+tags: [Blog]
 category: Guides
 draft: false
 ---
 
-### How can I deploy this pages?
 :::note
 I already have [npm](https://nodejs.org/en/download) installed on my machine and have set up [GitHub Pages](https://docs.github.com/en/pages/quickstart).
 :::
