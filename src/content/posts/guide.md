@@ -1,7 +1,7 @@
 ---
 title: How can I deploy this pages?
 published: 2025-06-19
-description: How to use this blog template.
+description: How to use this blog template
 image: https://img.freepik.com/free-photo/illustration-anime-city_23-2151779690.jpg?t=st=1750384605~exp=1750388205~hmac=cf03bf0255f708cab1d25d7f39870ce72a084d2c1bd937f412667c74049c912c&w=1480
 tags: [Blog]
 category: Guides
