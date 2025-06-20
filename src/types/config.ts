@@ -12,6 +12,7 @@ export type SiteConfig = {
 	};
 	banner: {
 		enable: boolean;
+		colorOnly: boolean;
 		src: string;
 		position?: "top" | "center" | "bottom";
 		credit: {
