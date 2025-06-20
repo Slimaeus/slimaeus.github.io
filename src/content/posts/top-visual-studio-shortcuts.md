@@ -1,12 +1,11 @@
 ---
 title: My top Visual Studio shortcuts
 published: 2025-06-20
-description: 'Improve your productivity'
-image: 'https://learn.microsoft.com/en-us/visualstudio/ide/media/default-keyboard-shortcuts-in-visual-studio/visual-studio-keyboard-shortcut-cheatsheet.png?view=vs-2017&viewFallbackFrom=vs-2022'
-tags: ['Visual Studio']
-category: 'Tips'
-draft: false 
-lang: 'en'
+description: Improve your productivity
+image: https://visualstudio.microsoft.com/wp-content/uploads/2023/01/VisualStudioLogo.webp
+tags: [Visual Studio]
+category: Tips
+draft: false
 ---
 ## 📝 Code editing
 - `Alt + 🔼/🔽` ➡️ Move line up/down
