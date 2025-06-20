@@ -65,7 +65,7 @@ export const profileConfig: ProfileConfig = {
 		{
 			name: "GitHub",
 			icon: "fa6-brands:github",
-			url: "https://github.com/slimaeus/slimaeus.github.io",
+			url: "https://github.com/slimaeus",
 		},
 	],
 };
