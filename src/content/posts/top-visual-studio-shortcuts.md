@@ -2,7 +2,6 @@
 title: My top Visual Studio shortcuts
 published: 2025-06-20
 description: Improve your productivity
-image: https://visualstudio.microsoft.com/wp-content/uploads/2023/01/VisualStudioLogo.webp
 tags: [Visual Studio]
 category: Tips
 draft: false
