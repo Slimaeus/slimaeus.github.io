@@ -7,7 +7,6 @@ tags: [Blog]
 category: Guides
 draft: false
 ---
-
 :::note
 I already have [npm](https://nodejs.org/en/download) installed on my machine and have set up [GitHub Pages](https://docs.github.com/en/pages/quickstart).
 :::

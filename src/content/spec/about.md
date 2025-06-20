@@ -10,6 +10,6 @@
 ```
 <img src="https://skillicons.dev/icons?i=cs,js,ts,dotnet,react,visualstudio,vscode,postgres&perline=8" />
 
-:::note
- Ask me about anything [here](https://github.com/slimaeus/slimaeus/issues)
+:::note[Have Questions?]
+ Ask me [here](https://github.com/slimaeus/slimaeus/issues)
 :::
