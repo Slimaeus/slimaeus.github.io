@@ -24,6 +24,8 @@ export const ko: Translation = {
 	[Key.minutesCount]: "분",
 	[Key.postCount]: "게시물",
 	[Key.postsCount]: "게시물",
+	[Key.projectCount]: "프로젝트",
+	[Key.projectsCount]: "프로젝트들",
 
 	[Key.themeColor]: "테마 색상",
 
