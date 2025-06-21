@@ -15,46 +15,34 @@ I already have [npm](https://nodejs.org/en/download) installed on my machine and
 1. Run `npm install -g pnpm` to install [pnpm](https://pnpm.io) .
 1. Run `pnpm install` to install dependencies.
 1. Add `deploy.yml` file to `.github/workflows` folder.
-    ```yml title=".github/workflows/deploy.yml"
+    ```yml title=".github/workflows/deploy.yml" collapse={7-9, 12-17,19-27}
     name: Deploy to GitHub Pages
-
     on:
-    # Trigger the workflow every time you push to the `main` branch
-    # Using a different branch name? Replace `main` with your branch’s name
-    push:
-        branches: [ main ]
-    # Allows you to run this workflow manually from the Actions tab on GitHub.
-    workflow_dispatch:
-
-    # Allow this job to clone the repo and create a page deployment
+        push:
+            branches: [ main ]
+        workflow_dispatch:
     permissions:
-    contents: read
-    pages: write
-    id-token: write
-
+        contents: read
+        pages: write
+        id-token: write
     jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - name: Checkout your repository using git
-            uses: actions/checkout@v4
-        - name: Install, build, and upload your site
-            uses: withastro/action@v3
-            # with:
-            # path: . # The root location of your Astro project inside the repository. (optional)
-            # node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
-            # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
-
-    deploy:
-        needs: build
-        runs-on: ubuntu-latest
-        environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
-        steps:
-        - name: Deploy to GitHub Pages
-            id: deployment
-            uses: actions/deploy-pages@v4
+        build:
+            runs-on: ubuntu-latest
+            steps:
+            - name: Checkout your repository using git
+                uses: actions/checkout@v4
+            - name: Install, build, and upload your site
+                uses: withastro/action@v3
+        deploy:
+            needs: build
+            runs-on: ubuntu-latest
+            environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+            steps:
+            - name: Deploy to GitHub Pages
+                id: deployment
+                uses: actions/deploy-pages@v4
     ```
 1. Edit the config file `src/config.ts`.
     ```ts title="src/config.ts" {2-3}
