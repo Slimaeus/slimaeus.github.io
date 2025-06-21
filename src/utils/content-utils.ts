@@ -13,35 +13,55 @@ interface Project {
 	};
 }
 
-export async function getSortedProjects() {
-	const res = await fetch("https://api.github.com/users/Slimaeus/repos");
-	const allProjects = await res.json();
+let cachedProjects: Project[] | null = null;
+let cacheTimestamp = 0;
+const CACHE_DURATION = 30 * 60 * 1000;
 
-	const mappedProjects: Project[] = allProjects.map(
-		(data: {
+export async function getSortedProjects() {
+	const now = Date.now();
+
+	if (cachedProjects && (now - cacheTimestamp < CACHE_DURATION)) {
+		return cachedProjects;
+	}
+
+	const res = await fetch("https://api.github.com/users/Slimaeus/repos");
+	const meiRes = await fetch("https://api.github.com/users/MeiCloudie/repos");
+
+	const slimaeusProjects: {
 			name: string;
 			html_url: string;
 			created_at: string;
-			language: string;
-		}) => {
-			return {
-				slug: data.html_url,
-				data: {
-					title: data.name,
-					tags: [],
-					published: new Date(data.created_at),
-				},
-			};
-		},
-	);
+			topics: string[]
+		}[] = await res.json();
+	const meiProjects: {
+			name: string;
+			html_url: string;
+			created_at: string;
+			topics: string[]
+		}[] = await meiRes.json();
 
-	const sorted = mappedProjects.sort((a: Project, b: Project) => {
-		const dateA = a.data.published;
-		const dateB = b.data.published;
-		return dateA > dateB ? -1 : 1;
-	});
+	const allProjects = [
+		...(!!slimaeusProjects.length ? slimaeusProjects.filter((data) => data.topics.includes('project')) : []),
+		...(!!meiProjects.length ? meiProjects.filter((data) => data.topics.includes('hutech-project')) : []),
+	];
+
+	const mappedProjects: Project[] = allProjects.map(data => ({
+		slug: data.html_url,
+		data: {
+			title: data.name,
+			tags: [],
+			published: new Date(data.created_at),
+		}
+	}));
+
+	const sorted = mappedProjects.sort((a, b) => +b.data.published - +a.data.published);
+
+	cachedProjects = sorted;
+	cacheTimestamp = now;
+
 	return sorted;
 }
+
 
 export async function getSortedPosts() {
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
