@@ -3,6 +3,46 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
 
+interface Project {
+	slug: string;
+	data: {
+		title: string;
+		tags: string[];
+		category?: string;
+		published: Date;
+	};
+}
+
+export async function getSortedProjects() {
+	const res = await fetch("https://api.github.com/users/Slimaeus/repos");
+	const allProjects = await res.json();
+
+	const mappedProjects: Project[] = allProjects.map(
+		(data: {
+			name: string;
+			html_url: string;
+			created_at: string;
+			language: string;
+		}) => {
+			return {
+				slug: data.html_url,
+				data: {
+					title: data.name,
+					tags: [],
+					published: new Date(data.created_at),
+				},
+			};
+		},
+	);
+
+	const sorted = mappedProjects.sort((a: Project, b: Project) => {
+		const dateA = a.data.published;
+		const dateB = b.data.published;
+		return dateA > dateB ? -1 : 1;
+	});
+	return sorted;
+}
+
 export async function getSortedPosts() {
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;

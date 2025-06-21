@@ -1,8 +1,11 @@
 ---
+import ProjectPanel from "@components/ProjectPanel.svelte";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
+import { getSortedProjects } from "../utils/content-utils";
 ---
 
 <MainGridLayout title={i18n(I18nKey.projects)} description={i18n(I18nKey.projects)}>
+    <ProjectPanel sortedProjects={await getSortedProjects()} client:only="svelte"></ProjectPanel>
 </MainGridLayout>

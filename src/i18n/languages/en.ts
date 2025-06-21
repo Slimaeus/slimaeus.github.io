@@ -24,6 +24,8 @@ export const en: Translation = {
 	[Key.minutesCount]: "minutes",
 	[Key.postCount]: "post",
 	[Key.postsCount]: "posts",
+	[Key.projectCount]: "project",
+	[Key.projectsCount]: "projects",
 
 	[Key.themeColor]: "Theme Color",
 
