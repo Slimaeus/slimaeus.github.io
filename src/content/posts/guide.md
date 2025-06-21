@@ -12,9 +12,9 @@ I already have [npm](https://nodejs.org/en/download) installed on my machine and
 :::
 1. Create blog repository:
     - Generate a new repository from [this template](https://github.com/saicaca/fuwari/generate).
-1. I run `npm install -g pnpm` to install [pnpm](https://pnpm.io) .
-1. I run `pnpm install` to install dependencies.
-1. I add `deploy.yml` file to `.github/workflows` folder.
+1. Run `npm install -g pnpm` to install [pnpm](https://pnpm.io) .
+1. Run `pnpm install` to install dependencies.
+1. Add `deploy.yml` file to `.github/workflows` folder.
     ```yml title=".github/workflows/deploy.yml"
     name: Deploy to GitHub Pages
 
@@ -71,8 +71,9 @@ I already have [npm](https://nodejs.org/en/download) installed on my machine and
         //...
     })
     ```
-1. I create `.nojekyll` empty file to the root folder.
-1. I commit and push.
+1. Create `.nojekyll` empty file to the root folder.
+1. Run `pnpm run format`
+1. Commit and push.
 > ### References
 > - [Fuwari template](https://github.com/saicaca/fuwari)
 > - [Install pnpm](https://pnpm.io/installation#using-npm)
