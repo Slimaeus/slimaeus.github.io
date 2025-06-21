@@ -20,7 +20,7 @@ const CACHE_DURATION = 30 * 60 * 1000;
 export async function getSortedProjects() {
 	const now = Date.now();
 
-	if (cachedProjects && (now - cacheTimestamp < CACHE_DURATION)) {
+	if (cachedProjects && now - cacheTimestamp < CACHE_DURATION) {
 		return cachedProjects;
 	}
 
@@ -28,40 +28,45 @@ export async function getSortedProjects() {
 	const meiRes = await fetch("https://api.github.com/users/MeiCloudie/repos");
 
 	const slimaeusProjects: {
-			name: string;
-			html_url: string;
-			created_at: string;
-			topics: string[]
-		}[] = await res.json();
+		name: string;
+		html_url: string;
+		created_at: string;
+		topics: string[];
+	}[] = await res.json();
 	const meiProjects: {
-			name: string;
-			html_url: string;
-			created_at: string;
-			topics: string[]
-		}[] = await meiRes.json();
+		name: string;
+		html_url: string;
+		created_at: string;
+		topics: string[];
+	}[] = await meiRes.json();
 
 	const allProjects = [
-		...(!!slimaeusProjects.length ? slimaeusProjects.filter((data) => data.topics.includes('project')) : []),
-		...(!!meiProjects.length ? meiProjects.filter((data) => data.topics.includes('hutech-project')) : []),
+		...(!!slimaeusProjects.length
+			? slimaeusProjects.filter((data) => data.topics.includes("project"))
+			: []),
+		...(!!meiProjects.length
+			? meiProjects.filter((data) => data.topics.includes("hutech-project"))
+			: []),
 	];
 
-	const mappedProjects: Project[] = allProjects.map(data => ({
+	const mappedProjects: Project[] = allProjects.map((data) => ({
 		slug: data.html_url,
 		data: {
 			title: data.name,
 			tags: [],
 			published: new Date(data.created_at),
-		}
+		},
 	}));
 
-	const sorted = mappedProjects.sort((a, b) => +b.data.published - +a.data.published);
+	const sorted = mappedProjects.sort(
+		(a, b) => +b.data.published - +a.data.published,
+	);
 
 	cachedProjects = sorted;
 	cacheTimestamp = now;
 
 	return sorted;
 }
-
 
 export async function getSortedPosts() {
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
