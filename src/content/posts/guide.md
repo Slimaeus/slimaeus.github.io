@@ -11,10 +11,9 @@ language: en
 I already have [npm](https://nodejs.org/en/download) installed on my machine and have set up [GitHub Pages](https://docs.github.com/en/pages/quickstart).
 :::
 1. Create blog repository:
-    - [Generate a new repository](https://github.com/saicaca/fuwari/generate) from [this template](https://github.com/saicaca/fuwari).
-1. I install [pnpm](https://pnpm.io) with this command `npm install -g pnpm`
+    - Generate a new repository from [this template](https://github.com/saicaca/fuwari/generate).
+1. I run `npm install -g pnpm` to install [pnpm](https://pnpm.io) .
 1. I run `pnpm install` to install dependencies.
-
 1. I add `deploy.yml` file to `.github/workflows` folder.
     ```yml title=".github/workflows/deploy.yml"
     name: Deploy to GitHub Pages
