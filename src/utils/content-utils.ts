@@ -41,10 +41,10 @@ export async function getSortedProjects() {
 	}[] = await meiRes.json();
 
 	const allProjects = [
-		...(!!slimaeusProjects.length
+		...(slimaeusProjects.length
 			? slimaeusProjects.filter((data) => data.topics.includes("project"))
 			: []),
-		...(!!meiProjects.length
+		...(meiProjects.length
 			? meiProjects.filter((data) => data.topics.includes("hutech-project"))
 			: []),
 	];

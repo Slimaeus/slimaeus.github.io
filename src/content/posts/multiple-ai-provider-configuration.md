@@ -85,7 +85,7 @@ app.MapGet("", async (
 });
 ```
 :::note
-You can switch to other providers like `options.Value.Mistral`, `Ollama`, etc.
+You can switch to other providers like `options.Value.Mistral`, `options.Value.Ollama`, etc.
 :::
 > ### References
 > - [OpenAI nuget package](https://www.nuget.org/packages/OpenAI/)
