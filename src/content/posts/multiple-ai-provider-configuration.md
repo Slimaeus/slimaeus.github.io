@@ -60,9 +60,14 @@ builder.Services.Configure<ProviderSettings>(
     builder.Configuration.GetSection(nameof(ProviderSettings)));
 ```
 ---
-## 4. Use in endpoint
-```csharp
-app.MapGet("/", async (
+## 4. Install `OpenAI` package
+```bash
+dotnet add package OpenAI
+```
+---
+## 5. Use in endpoint
+```csharp {6}
+app.MapGet("", async (
     IOptions<ProviderSettings> options,
     string prompt,
     CancellationToken cancellationToken) =>
@@ -82,3 +87,5 @@ app.MapGet("/", async (
 :::note
 You can switch to other providers like `options.Value.Mistral`, `Ollama`, etc.
 :::
+> ### References
+> - [OpenAI nuget package](https://www.nuget.org/packages/OpenAI/)
