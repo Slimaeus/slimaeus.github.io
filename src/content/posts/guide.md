@@ -60,7 +60,7 @@ I already have [npm](https://nodejs.org/en/download) installed on my machine and
     })
     ```
 1. Create `.nojekyll` empty file to the root folder.
-1. Run `pnpm run format`
+1. Run `pnpm run format` and `pnpm run lint`
 1. Commit and push.
 > ### References
 > - [Fuwari template](https://github.com/saicaca/fuwari)
