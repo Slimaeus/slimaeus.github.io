@@ -1,5 +1,5 @@
 ---
-title: How can I configure for multiple AI providers?
+title: Configure multiple AI providers
 published: 2025-06-21
 description: How I configure  multiple AI providers (Gemini, Mistral, Ollama...)
 tags: [C#, .NET, Api]
