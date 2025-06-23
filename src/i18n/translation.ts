@@ -14,7 +14,7 @@ const map: { [key: string]: Translation } = {
 	en_us: en,
 	en_gb: en,
 	en_au: en,
-	vi: vi
+	vi: vi,
 };
 
 export function getTranslation(lang: string): Translation {
