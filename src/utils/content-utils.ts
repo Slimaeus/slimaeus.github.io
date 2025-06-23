@@ -26,6 +26,9 @@ export async function getSortedProjects() {
 
 	const res = await fetch("https://api.github.com/users/Slimaeus/repos");
 	const meiRes = await fetch("https://api.github.com/users/MeiCloudie/repos");
+	const hutechCJRes = await fetch(
+		"https://api.github.com/users/HUTECHCJ/repos",
+	);
 
 	const slimaeusProjects: {
 		name: string;
@@ -40,12 +43,22 @@ export async function getSortedProjects() {
 		topics: string[];
 	}[] = await meiRes.json();
 
+	const hutechCJProjects: {
+		name: string;
+		html_url: string;
+		created_at: string;
+		topics: string[];
+	}[] = await hutechCJRes.json();
+
 	const allProjects = [
 		...(slimaeusProjects.length
 			? slimaeusProjects.filter((data) => data.topics.includes("project"))
 			: []),
 		...(meiProjects.length
 			? meiProjects.filter((data) => data.topics.includes("hutech-project"))
+			: []),
+		...(hutechCJProjects.length
+			? hutechCJProjects.filter((data) => data.topics.includes("hutech"))
 			: []),
 	];
 
