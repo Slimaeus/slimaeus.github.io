@@ -20,5 +20,6 @@ language: en
 - `Shift + Alt + ;` ➡️ Insert all matching carets
 ## 📚 Projects and solutions
 - `Ctrl + Shift + B` ➡️ Build solution
+---
 > ### References
 > - [Keyboard shortcuts in Visual Studio](https://learn.microsoft.com/en-us/visualstudio/ide/default-keyboard-shortcuts-in-visual-studio?view=vs-2022)
