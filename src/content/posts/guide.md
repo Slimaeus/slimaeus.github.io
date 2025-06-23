@@ -2,7 +2,7 @@
 title: Deploy this pages
 published: 2025-06-19
 description: How to use this blog template
-tags: [Blog]
+tags: [blog]
 category: Guides
 draft: false
 language: en
