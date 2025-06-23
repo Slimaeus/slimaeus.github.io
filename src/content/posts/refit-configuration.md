@@ -53,14 +53,6 @@ app.MapGet("github/{userName}", async (
     return Results.Ok(response);
 });
 ```
-> Response:
-```json
-{
-  "id": 75177632,
-  "login": "Slimaeus",
-  "avatar_url": "https://avatars.githubusercontent.com/u/75177632?v=4"
-}
-```
 ---
 > ### References
 > - [Refit nuget package](https://www.nuget.org/packages/Refit/)
