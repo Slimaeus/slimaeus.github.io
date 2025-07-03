@@ -2,7 +2,7 @@
 title: Configure multiple AI providers
 published: 2025-06-21
 description: How I configure  multiple AI providers (Gemini, Mistral, Ollama...)
-tags: [csharp, dotnet, api]
+tags: [c-sharp, dotnet, api]
 category: Guides
 draft: false 
 lang: en

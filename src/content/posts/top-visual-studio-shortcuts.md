@@ -2,7 +2,7 @@
 title: My top Visual Studio shortcuts
 published: 2025-06-20
 description: Improve your productivity
-tags: [visualstudio, shortcuts]
+tags: [visual-studio, shortcuts]
 category: Tips
 draft: false
 language: en
