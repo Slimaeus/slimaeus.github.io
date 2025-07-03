@@ -34,7 +34,7 @@ language: en
     npm run dev
     ```
     :::note
-    Change `npm` to your Node.js package manager command
+    Change `npm` to your Node.js package manager
     :::
 1. You need to create your account and now you can access to the admin panel. 
 ---
