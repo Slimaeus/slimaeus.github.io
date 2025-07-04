@@ -25,7 +25,7 @@ language: en
 1. Commit changes
 ![Click commit](click-commit.png)
 ![Commit changes](commit-change.png)
-1. Go to `Pull requests` and create a new pull request
+1. Go to your repository's `Pull requests` tab and create a new pull request
 ![Go to pull request](go-to-pull-request.png)
 You can choose `Compare & pull request` or `New pull request`
     - `New pull request`: Change the compare to your new branch and click `Create pull request`
