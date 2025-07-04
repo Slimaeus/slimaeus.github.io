@@ -28,7 +28,7 @@ language: en
 1. Go to your repository's `Pull requests` tab and create a new pull request
 ![Go to pull request](go-to-pull-request.png)
 You can choose `Compare & pull request` or `New pull request`
-    - `New pull request`: Change the compare to your new branch and click `Create pull request`
+    - If you choose `New pull request`: Change the compare to your new branch and click `Create pull request`
     ![Change compare](change-compare.png)
     ![Click create pull request](click-create-pull-request.png)
 1. Update the message and create the pull request
