@@ -7,6 +7,7 @@ category: Tips
 draft: false
 language: en
 ---
+1. Go to [developer-portfolios](https://github.com/emmabostian/developer-portfolios)
 1. Click to the fork button on the repository
 ![Fork](fork.png)
 1. Create the fork
