@@ -1,4 +1,9 @@
-import { getCollection } from "astro:content";
+import {
+	getCollection,
+	type InferEntrySchema,
+	type Render,
+	type RenderedContent,
+} from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
@@ -17,7 +22,7 @@ let cachedProjects: Project[] | null = null;
 let cacheTimestamp = 0;
 const CACHE_DURATION = 30 * 60 * 1000;
 
-export async function getSortedProjects() {
+export async function getSortedProjects(): Promise<Project[]> {
 	const now = Date.now();
 
 	if (cachedProjects && now - cacheTimestamp < CACHE_DURATION) {
@@ -81,7 +86,18 @@ export async function getSortedProjects() {
 	return sorted;
 }
 
-export async function getSortedPosts() {
+export async function getSortedPosts(): Promise<
+	{
+		id: string;
+		render(): Render[".md"];
+		slug: string;
+		body: string;
+		collection: "posts";
+		data: InferEntrySchema<"posts">;
+		rendered?: RenderedContent;
+		filePath?: string;
+	}[]
+> {
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
