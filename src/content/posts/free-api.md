@@ -2,7 +2,7 @@
 title: Free Apis
 published: 2025-07-04
 description: Here are some free APIs I found
-tags: [api]
+tags: [API]
 category: Tips
 draft: false
 language: en

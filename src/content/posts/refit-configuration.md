@@ -2,7 +2,7 @@
 title: Configure Refit
 published: 2025-06-23
 description: How I configure Refit
-tags: [c-sharp, dotnet, api]
+tags: [C Sharp, .NET, API]
 category: Guides
 draft: false 
 lang: en

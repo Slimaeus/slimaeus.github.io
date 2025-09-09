@@ -2,7 +2,7 @@
 title: Add portfolio to "developer-portfolios" repository
 published: 2025-07-04
 description: How I add my portfolio to "developer-portfolios" repository
-tags: [portfolio]
+tags: [Portfolio]
 category: Tips
 draft: false
 language: en

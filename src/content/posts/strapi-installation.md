@@ -2,7 +2,7 @@
 title: Install Strapi
 published: 2025-07-03
 description: How I install Strapi
-tags: [strapi, headless-cms]
+tags: [Strapi, Headless CMS]
 category: Guides
 draft: false
 language: en
