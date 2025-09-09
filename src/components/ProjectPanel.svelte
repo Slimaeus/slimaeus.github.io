@@ -77,8 +77,8 @@ onMount(async () => {
 	);
 
 	const groupedProjectsArray = Object.keys(grouped).map((yearStr) => ({
-		year: Number.parseInt(yearStr),
-		projects: grouped[Number.parseInt(yearStr)],
+		year: Number.parseInt(yearStr, 0),
+		projects: grouped[Number.parseInt(yearStr, 0)],
 	}));
 
 	groupedProjectsArray.sort((a, b) => b.year - a.year);

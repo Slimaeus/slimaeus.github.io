@@ -6,6 +6,7 @@ import { definePlugin, type ExpressiveCodePlugin } from "@expressive-code/core";
 export function pluginLanguageBadge(): ExpressiveCodePlugin {
 	return definePlugin({
 		name: "Language Badge",
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		baseStyles: ({ _cssVar }) => `
       [data-language]::before {
