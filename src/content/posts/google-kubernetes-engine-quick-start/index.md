@@ -1,5 +1,5 @@
 ---
-title: Google Kubernetes Engine Setup
+title: Google Kubernetes Engine quick start
 published: 2025-09-09
 description: How I setup Google Kubernetes Engine
 tags: [Google Cloud, GKE]
