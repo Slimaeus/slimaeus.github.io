@@ -24,8 +24,8 @@ language: en
         gcloud config set compute/zone "ZONE"
         ```
         :::note
-        - `REGION`: [available regions](https://cloud.google.com/compute/docs/regions-zones/#available). Ex: `us-central1`.
-        - `ZONE`: [available zones](https://cloud.google.com/compute/docs/regions-zones/#available). Ex: `us-central1-a` is a zone in the `us-central1` region.
+        - `REGION`: [available region](https://cloud.google.com/compute/docs/regions-zones/#available). Ex: `us-central1`.
+        - `ZONE`: [available zone](https://cloud.google.com/compute/docs/regions-zones/#available). Ex: `us-central1-a` is a zone in the `us-central1` region.
         :::
 1. Create a GKE cluster
     - Create a cluster
