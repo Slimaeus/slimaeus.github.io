@@ -1,54 +1,52 @@
 <script lang="ts">
 import { onMount } from "svelte";
-
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { getPostUrlBySlug } from "../utils/url-utils";
 
-export let tags: string[];
-export let categories: string[];
-export let sortedPosts: Post[] = [];
-
-const params = new URLSearchParams(window.location.search);
-tags = params.has("tag") ? params.getAll("tag") : [];
-categories = params.has("category") ? params.getAll("category") : [];
-const uncategorized = params.get("uncategorized");
-
-interface Post {
+type Post = {
 	slug: string;
 	data: {
 		title: string;
 		tags: string[];
-		category?: string;
+		category?: string | null;
 		published: Date;
+		draft?: boolean;
 	};
-}
+};
 
 interface Group {
 	year: number;
 	posts: Post[];
 }
 
-let groups: Group[] = [];
+export let sortedPosts: Post[] = [];
 
+let tags: string[] = [];
+let categories: string[] = [];
+let groups: Group[] = [];
 function formatDate(date: Date) {
-	const month = (date.getMonth() + 1).toString().padStart(2, "0");
-	const day = date.getDate().toString().padStart(2, "0");
+	const d = new Date(date);
+	const month = (d.getMonth() + 1).toString().padStart(2, "0");
+	const day = d.getDate().toString().padStart(2, "0");
 	return `${month}-${day}`;
 }
 
 function formatTag(tagList: string[]) {
-	return tagList.map((t) => `#${t}`).join(" ");
+	return tagList?.map((t) => `#${t}`).join(" ") || "";
 }
 
-onMount(async () => {
-	let filteredPosts: Post[] = sortedPosts;
+onMount(() => {
+	const params = new URLSearchParams(window.location.search);
+	tags = params.getAll("tag");
+	categories = params.getAll("category");
+	const uncategorized = params.has("uncategorized");
+
+	let filteredPosts: Post[] = [...sortedPosts];
 
 	if (tags.length > 0) {
-		filteredPosts = filteredPosts.filter(
-			(post) =>
-				Array.isArray(post.data.tags) &&
-				post.data.tags.some((tag) => tags.includes(tag)),
+		filteredPosts = filteredPosts.filter((post) =>
+			post.data.tags?.some((tag: string) => tags.includes(tag)),
 		);
 	}
 
@@ -64,24 +62,20 @@ onMount(async () => {
 
 	const grouped = filteredPosts.reduce(
 		(acc, post) => {
-			const year = post.data.published.getFullYear();
-			if (!acc[year]) {
-				acc[year] = [];
-			}
+			const year = new Date(post.data.published).getFullYear();
+			if (!acc[year]) acc[year] = [];
 			acc[year].push(post);
 			return acc;
 		},
 		{} as Record<number, Post[]>,
 	);
 
-	const groupedPostsArray = Object.keys(grouped).map((yearStr) => ({
-		year: Number.parseInt(yearStr, 0),
-		posts: grouped[Number.parseInt(yearStr, 0)],
-	}));
-
-	groupedPostsArray.sort((a, b) => b.year - a.year);
-
-	groups = groupedPostsArray;
+	groups = Object.keys(grouped)
+		.map((year) => ({
+			year: Number.parseInt(year),
+			posts: grouped[Number.parseInt(year)],
+		}))
+		.sort((a, b) => b.year - a.year);
 });
 </script>
 
