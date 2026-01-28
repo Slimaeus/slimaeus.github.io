@@ -3,31 +3,31 @@ import type { Translation } from "../translation";
 
 export const vi: Translation = {
 	[Key.home]: "Trang chủ",
-	[Key.about]: "Tôi",
-	[Key.archive]: "Archive",
+	[Key.about]: "Giới thiệu",
+	[Key.archive]: "Kho bài",
 	[Key.search]: "Tìm kiếm",
 	[Key.projects]: "Dự án",
 
-	[Key.tags]: "Nhãn",
+	[Key.tags]: "Thẻ",
 	[Key.categories]: "Danh mục",
-	[Key.recentPosts]: "Bài viết gần đây",
+	[Key.recentPosts]: "Bài viết mới nhất",
 
 	[Key.comments]: "Bình luận",
 
 	[Key.untitled]: "Không tiêu đề",
-	[Key.uncategorized]: "Không phân mục",
-	[Key.noTags]: "Không nhãn",
+	[Key.uncategorized]: "Chưa phân loại",
+	[Key.noTags]: "Chưa có thẻ",
 
 	[Key.wordCount]: "từ",
 	[Key.wordsCount]: "từ",
-	[Key.minuteCount]: "phút",
-	[Key.minutesCount]: "phút",
+	[Key.minuteCount]: "phút đọc",
+	[Key.minutesCount]: "phút đọc",
 	[Key.postCount]: "bài viết",
 	[Key.postsCount]: "bài viết",
 	[Key.projectCount]: "dự án",
 	[Key.projectsCount]: "dự án",
 
-	[Key.themeColor]: "Màu chủ đề",
+	[Key.themeColor]: "Màu giao diện",
 
 	[Key.lightMode]: "Sáng",
 	[Key.darkMode]: "Tối",
@@ -36,6 +36,6 @@ export const vi: Translation = {
 	[Key.more]: "Thêm",
 
 	[Key.author]: "Tác giả",
-	[Key.publishedAt]: "Xuất bản lúc",
-	[Key.license]: "Giấy phép",
+	[Key.publishedAt]: "Đăng vào lúc",
+	[Key.license]: "Giấy phép bản quyền",
 };

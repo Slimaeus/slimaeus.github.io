@@ -23,7 +23,7 @@ export const siteConfig: SiteConfig = {
 		credit: {
 			enable: false, // Display the credit text of the banner image
 			text: "Slimaeus - Paint", // Credit text to be displayed
-			// url: "https://www.shakker.ai", // (Optional) URL link to the original artwork or artist's page
+			// url: "", // (Optional) URL link to the original artwork or artist's page
 		},
 	},
 	toc: {
