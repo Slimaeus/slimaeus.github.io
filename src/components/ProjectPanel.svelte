@@ -4,18 +4,18 @@ import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 
 interface Project {
-    slug: string;
-    data: {
-        title: string;
-        tags: string[];
-        category?: string | null;
-        published: Date | string;
-    };
+	slug: string;
+	data: {
+		title: string;
+		tags: string[];
+		category?: string | null;
+		published: Date | string;
+	};
 }
 
 interface Group {
-    year: number;
-    projects: Project[];
+	year: number;
+	projects: Project[];
 }
 
 export let sortedProjects: Project[] = [];
@@ -25,55 +25,58 @@ let categories: string[] = [];
 let groups: Group[] = [];
 
 function formatDate(date: Date | string) {
-    const d = new Date(date);
-    const month = (d.getMonth() + 1).toString().padStart(2, "0");
-    const day = d.getDate().toString().padStart(2, "0");
-    return `${month}-${day}`;
+	const d = new Date(date);
+	const month = (d.getMonth() + 1).toString().padStart(2, "0");
+	const day = d.getDate().toString().padStart(2, "0");
+	return `${month}-${day}`;
 }
 
 function formatTag(tagList: string[]) {
-    if (!tagList) return "";
-    return tagList.map((t) => `#${t}`).join(" ");
+	if (!tagList) return "";
+	return tagList.map((t) => `#${t}`).join(" ");
 }
 
 onMount(async () => {
-    // Access window safely inside onMount
-    const params = new URLSearchParams(window.location.search);
-    tags = params.getAll("tag");
-    categories = params.getAll("category");
-    const uncategorized = params.has("uncategorized");
+	// Access window safely inside onMount
+	const params = new URLSearchParams(window.location.search);
+	tags = params.getAll("tag");
+	categories = params.getAll("category");
+	const uncategorized = params.has("uncategorized");
 
-    let filteredProjects: Project[] = [...sortedProjects];
+	let filteredProjects: Project[] = [...sortedProjects];
 
-    if (tags.length > 0) {
-        filteredProjects = filteredProjects.filter(
-            (p) => p.data.tags?.some((tag) => tags.includes(tag))
-        );
-    }
+	if (tags.length > 0) {
+		filteredProjects = filteredProjects.filter((p) =>
+			p.data.tags?.some((tag) => tags.includes(tag)),
+		);
+	}
 
-    if (categories.length > 0) {
-        filteredProjects = filteredProjects.filter(
-            (p) => p.data.category && categories.includes(p.data.category)
-        );
-    }
+	if (categories.length > 0) {
+		filteredProjects = filteredProjects.filter(
+			(p) => p.data.category && categories.includes(p.data.category),
+		);
+	}
 
-    if (uncategorized) {
-        filteredProjects = filteredProjects.filter((p) => !p.data.category);
-    }
+	if (uncategorized) {
+		filteredProjects = filteredProjects.filter((p) => !p.data.category);
+	}
 
-    const grouped = filteredProjects.reduce((acc, project) => {
-        const year = new Date(project.data.published).getFullYear();
-        if (!acc[year]) acc[year] = [];
-        acc[year].push(project);
-        return acc;
-    }, {} as Record<number, Project[]>);
+	const grouped = filteredProjects.reduce(
+		(acc, project) => {
+			const year = new Date(project.data.published).getFullYear();
+			if (!acc[year]) acc[year] = [];
+			acc[year].push(project);
+			return acc;
+		},
+		{} as Record<number, Project[]>,
+	);
 
-    groups = Object.keys(grouped)
-        .map((yearStr) => ({
-            year: Number.parseInt(yearStr),
-            projects: grouped[Number.parseInt(yearStr)],
-        }))
-        .sort((a, b) => b.year - a.year);
+	groups = Object.keys(grouped)
+		.map((yearStr) => ({
+			year: Number.parseInt(yearStr),
+			projects: grouped[Number.parseInt(yearStr)],
+		}))
+		.sort((a, b) => b.year - a.year);
 });
 </script>
 
