@@ -20,7 +20,7 @@ interface Props {
 const className = Astro.props.class;
 const style = Astro.props.style;
 ---
-<WidgetLayout name={i18n(I18nKey.tags)} id="tags" isCollapsed={isCollapsed} collapsedHeight={COLLAPSED_HEIGHT} class={className} style={style}>
+<WidgetLayout id="tags" isCollapsed={isCollapsed} collapsedHeight={COLLAPSED_HEIGHT} class={className} style={style}>
     <div class="flex gap-2 flex-wrap">
         {tags.map(t => (
             <ButtonTag href={getTagUrl(t.name)} label={`View all posts with the ${t.name.trim()} tag`}>
@@ -29,3 +29,14 @@ const style = Astro.props.style;
         ))}
     </div>
 </WidgetLayout>
+
+<script>
+  import { getLang, getTranslation } from "@i18n/translation";
+  import I18nKey from "@i18n/i18nKey";
+
+  const t = getTranslation(getLang());
+  const el = document.querySelector("#tags")
+    ?.closest("widget-layout")
+    ?.querySelector("[data-i18n-title]");
+  if (el) el.textContent = t[I18nKey.tags];
+</script>
