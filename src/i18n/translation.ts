@@ -21,7 +21,19 @@ export function getTranslation(lang: string): Translation {
 	return map[lang.toLowerCase()] || defaultTranslation;
 }
 
+export function getLang(): string {
+	if (typeof localStorage !== "undefined") {
+		return localStorage.getItem("lang") || siteConfig.lang || "en";
+	}
+	return siteConfig.lang || "en";
+}
+
+export function setLang(lang: string) {
+	localStorage.setItem("lang", lang);
+	window.location.reload();
+}
+
 export function i18n(key: I18nKey): string {
-	const lang = siteConfig.lang || "en";
+	const lang = getLang();
 	return getTranslation(lang)[key];
 }
